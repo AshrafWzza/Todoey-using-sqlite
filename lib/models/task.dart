@@ -20,9 +20,6 @@ class Task {
 
   Task({this.id, required this.name, this.isDone = false});
 
-  /* void toggleDone() {
-    isDone = !isDone;
-  }*/
   Task copyWith({
     int? id,
     String? name,
