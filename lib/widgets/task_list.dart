@@ -19,21 +19,24 @@ class _TaskListState extends State<TaskList> {
       itemCount: widget.tasks.length,
       itemBuilder: (context, int index) {
         return ListTile(
-          title: Text(
-            widget.tasks[index].name,
-            style: TextStyle(
-                decoration: widget.tasks[index].isDone
-                    ? TextDecoration.lineThrough
-                    : null),
-          ),
-          trailing: Checkbox(
-              value: widget.tasks[index].isDone,
-              onChanged: (bool? value) {
-                TaskData.updateTask(widget.tasks[index], value!);
-                setState(() {});
-              }),
-          onLongPress: () => TaskData.deleteTask(widget.tasks[index]),
-        );
+            title: Text(
+              widget.tasks[index].name,
+              style: TextStyle(
+                  decoration: widget.tasks[index].isDone
+                      ? TextDecoration.lineThrough
+                      : null),
+            ),
+            trailing: Checkbox(
+                value: widget.tasks[index].isDone,
+                onChanged: (bool? value) {
+                  TaskData.updateTask(widget.tasks[index], value!);
+                  setState(() {});
+                }),
+            onLongPress: () {
+              setState(() {
+                TaskData.deleteTask(widget.tasks[index]);
+              });
+            });
       },
     );
   }
