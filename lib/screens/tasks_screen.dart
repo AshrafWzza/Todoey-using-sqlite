@@ -23,19 +23,12 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState() {
     super.initState();
-    //firstInitiation();
     refreshTasks();
   }
 
-  // firstInitiation() {
-  //   TaskData.add(Task(name: 'zzzzzzzzzzzzzzzzz'));
-  // }
-
   Future refreshTasks() async {
     setState(() => isLoading = true);
-
     tasks = await TasksDatabase.instance.readAllTasks();
-
     setState(() => isLoading = false);
   }
 

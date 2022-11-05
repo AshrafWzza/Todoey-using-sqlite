@@ -80,10 +80,10 @@ class TasksDatabase {
     return result.map((json) => Task.fromMap(json)).toList();
   }
 
-  Future<int> update(Task task) async {
+  Future<void> update(Task task) async {
     final db = await instance.database;
 
-    return db.update(
+    db.update(
       tableTasks,
       task.toMap(),
       where: '${TaskFields.id} = ?',
@@ -91,10 +91,10 @@ class TasksDatabase {
     );
   }
 
-  Future<int> delete(int id) async {
+  Future<void> delete(int id) async {
     final db = await instance.database;
 
-    return await db.delete(
+    await db.delete(
       tableTasks,
       where: '${TaskFields.id} = ?',
       whereArgs: [id],
