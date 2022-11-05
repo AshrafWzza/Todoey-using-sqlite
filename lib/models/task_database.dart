@@ -28,6 +28,7 @@ class TasksDatabase {
     const textType = 'TEXT';
     const boolType = 'BOOLEAN';
 
+    /// sensitive indentation
     ///Be Careful with FORMATTING You need to remove space from table name and "(" and you have to remove the ending ",".
     await db.execute('''
     CREATE TABLE $tableTasks( 
