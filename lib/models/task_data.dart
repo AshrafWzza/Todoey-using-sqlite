@@ -15,12 +15,12 @@ class TaskData {
     return tasks.length;
   }
 
-  void updateTask(Task taskwantedtochange, bool value) {
+  static void updateTask(Task taskwantedtochange, bool value) {
     taskwantedtochange.isDone = value;
     TasksDatabase.instance.update(taskwantedtochange);
   }
 
-  void deleteTask(Task task) {
+  static void deleteTask(Task task) {
     TasksDatabase.instance.delete(task.id!);
   }
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:todoey_sqlite/models/task_database.dart';
 import 'screens/tasks_screen.dart';
 
 void main() async {
@@ -21,9 +19,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TasksScreen(),
+      theme: ThemeData(brightness: Brightness.dark),
+      home: const TasksScreen(),
     );
   }
 }

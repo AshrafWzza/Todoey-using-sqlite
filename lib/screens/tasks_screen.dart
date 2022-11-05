@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:todoey_sqlite/models/task.dart';
 import 'package:todoey_sqlite/models/task_database.dart';
 import 'package:todoey_sqlite/screens/add_task_screen.dart';
-import 'package:todoey_sqlite/models/task_data.dart';
 import 'package:todoey_sqlite/widgets/task_list.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -112,11 +110,11 @@ class _TasksScreenState extends State<TasksScreen> {
                     ),
                   ),
                   Text(
-                    //'${TaskData().taskCount} Tasks',
-                    'Tasks',
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+                    '${tasks.length} Tasks',
+
+                    // style: TextStyle(
+                    //   color: Colors.white,
+                    // ),
                   ),
                 ],
               ),
@@ -126,7 +124,7 @@ class _TasksScreenState extends State<TasksScreen> {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : tasks.length == 0
+              : tasks.isEmpty
                   ? const Center(
                       child: Text('No Tasks yet!'),
                     )
