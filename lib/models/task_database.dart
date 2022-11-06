@@ -58,6 +58,9 @@ class TasksDatabase {
     final maps = await db.query(
       tableTasks,
       columns: TaskFields.values,
+
+      ///where: '${TaskFields.id} = $id', use ? and whereArgs to prevent sqlInjection
+      /// you can add more than one args -->  where: '${TaskFields.id} = ? ? ? ? ?',
       where: '${TaskFields.id} = ?',
       whereArgs: [id],
     );
