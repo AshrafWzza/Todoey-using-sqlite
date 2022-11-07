@@ -9,7 +9,8 @@ class TasksDatabase {
   TasksDatabase._init();
   Future<Database> get database async =>
       _database ??= await _initDB('tasks.db');
-/* Instead of:
+/*
+ ** Instead of:
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, filePath);
 
