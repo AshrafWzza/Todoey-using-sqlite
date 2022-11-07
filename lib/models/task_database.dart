@@ -1,24 +1,31 @@
-import 'package:path/path.dart';
+//import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:todoey_sqlite/models/task.dart';
 
 class TasksDatabase {
   static final TasksDatabase instance = TasksDatabase._init();
-
   static Database? _database;
-
   TasksDatabase._init();
-  //! LateInitializationError
-
   Future<Database> get database async =>
       _database ??= await _initDB('tasks.db');
+/* Instead of:
+  final dbPath = await getDatabasesPath();
+  final path = join(dbPath, filePath);
+
+  ** You can put:
+  Future<Database> _initDB(String filePath) async {
+    return await openDatabase(filePath, version: 1);
+  }
+
+  ** because openDatabase first parameter now gets the default database path automatically, just pass the database name "tasks.db"
+ */
 
   Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
-
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    // final dbPath = await getDatabasesPath();
+    // final path = join(dbPath, filePath);
+    return await openDatabase(filePath /**path*/,
+        version: 1, onCreate: _createDB);
   }
 
   Future _createDB(Database db, int version) async {
