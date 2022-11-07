@@ -12,7 +12,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  late List<Task> tasks;
+  List<Task> tasks = [];
   bool isLoading = false;
   @override
   void dispose() {

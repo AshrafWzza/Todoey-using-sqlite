@@ -1,5 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
 import 'package:todoey_sqlite/models/task.dart';
 
 class TasksDatabase {
@@ -8,13 +9,10 @@ class TasksDatabase {
   static Database? _database;
 
   TasksDatabase._init();
+  //! LateInitializationError
 
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-
-    _database = await _initDB('tasks.db');
-    return _database!;
-  }
+  Future<Database> get database async =>
+      _database ??= await _initDB('tasks.db');
 
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
